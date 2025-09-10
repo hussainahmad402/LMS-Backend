@@ -40,12 +40,11 @@ The system supports **role-based access control**:
 git clone https://github.com/your-username/edumanage-backend.git
 cd edumanage-backend
 
-```
+```bash
 composer install
 cp .env.example .env
 
-```
-```
+```bash
 APP_NAME=EduManage
 APP_ENV=local
 APP_KEY=
@@ -66,11 +65,10 @@ STRIPE_KEY=your_stripe_key
 STRIPE_SECRET=your_stripe_secret
 PAYPAL_CLIENT_ID=your_paypal_client_id
 PAYPAL_SECRET=your_paypal_secret
-```
-```
+
+```bash
 php artisan key:generate
 php artisan jwt:secret
 php artisan migrate --seed
 php artisan serve
 API will be available at → http://127.0.0.1:8000/api
-```
