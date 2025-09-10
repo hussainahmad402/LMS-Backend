@@ -39,12 +39,13 @@ The system supports **role-based access control**:
 ```bash
 git clone https://github.com/your-username/edumanage-backend.git
 cd edumanage-backend
-
-
+```
+### 2️⃣ Install Dependencies
 ```bash
 composer install
 cp .env.example .env
 ```
+#### Update .env file:
 ```bash
 APP_NAME=EduManage
 APP_ENV=local
@@ -67,6 +68,7 @@ STRIPE_SECRET=your_stripe_secret
 PAYPAL_CLIENT_ID=your_paypal_client_id
 PAYPAL_SECRET=your_paypal_secret
 ```
+### 3️⃣ Generate Keys
 ```bash
 php artisan key:generate
 php artisan jwt:secret
@@ -75,140 +77,67 @@ php artisan serve
 API will be available at → http://127.0.0.1:8000/api
 ```
 
-📚 API Endpoints
-🔐 Authentication
+### 📚 API Endpoints
+#### 🔐 Authentication
 
-POST /api/register → User Registration
+##### POST /api/register → User Registration
+##### POST /api/verify-otp → Verify OTP
+##### POST /api/login → Login
+##### POST /api/forgot-password → Request OTP
+##### POST /api/reset-password → Reset Password
 
-POST /api/verify-otp → Verify OTP
+#### 👤 User Profile
 
-POST /api/login → Login
+##### GET /api/profile → Get Profile
+##### PUT /api/profile → Update Profile
 
-POST /api/forgot-password → Request OTP
+#### 📂 Course & Category Management
 
-POST /api/reset-password → Reset Password
+##### POST /api/categories → Create Category (Admin only)
+##### GET /api/categories → List Categories
+##### POST /api/courses → Create Course (Instructor only)
+##### GET /api/courses → List Courses (with filters)
+##### GET /api/courses/{id} → Course Details
+##### PUT /api/courses/{id} → Update Course
+##### DELETE /api/courses/{id} → Delete Course
 
-👤 User Profile
+#### 🎥 Lessons
 
-GET /api/profile → Get Profile
+##### POST /api/courses/{id}/lessons → Add Lesson
+##### GET /api/courses/{id}/lessons → List Lessons
+##### PUT /api/lessons/{id} → Update Lesson
+##### DELETE /api/lessons/{id} → Delete Lesson
 
-PUT /api/profile → Update Profile
+#### 🎓 Enrollment & Progress
 
-📂 Course & Category Management
+##### POST /api/courses/{id}/enroll → Enroll in Course
+##### GET /api/my-enrollments → My Enrollments
+##### POST /api/lessons/{id}/complete → Mark Lesson Complete
+##### GET /api/courses/{id}/progress → Track Progress
+##### POST /api/courses/{id}/reviews → Add Review
 
-POST /api/categories → Create Category (Admin only)
+#### 📝 Assignments & Quizzes
 
-GET /api/categories → List Categories
+##### POST /api/lessons/{id}/assignments → Create Assignment
+##### POST /api/assignments/{id}/submit → Submit Assignment
+##### PUT /api/submissions/{id}/grade → Grade Assignment
+##### POST /api/lessons/{id}/quizzes → Create Quiz
+##### POST /api/quizzes/{id}/questions → Add Questions to Quiz
+##### POST /api/quizzes/{id}/attempt → Attempt Quiz
+##### GET /api/quizzes/{id}/results → View Quiz Results
 
-POST /api/courses → Create Course (Instructor only)
+#### 💳 Payments & Certificates
 
-GET /api/courses → List Courses (with filters)
+##### POST /api/checkout → Checkout
+##### POST /api/payment/webhook → Payment Webhook
+##### GET /api/courses/{id}/certificate → Download Certificate
 
-GET /api/courses/{id} → Course Details
+#### 🛠️ Admin APIs
 
-PUT /api/courses/{id} → Update Course
-
-DELETE /api/courses/{id} → Delete Course
-
-🎥 Lessons
-
-POST /api/courses/{id}/lessons → Add Lesson
-
-GET /api/courses/{id}/lessons → List Lessons
-
-PUT /api/lessons/{id} → Update Lesson
-
-DELETE /api/lessons/{id} → Delete Lesson
-
-🎓 Enrollment & Progress
-
-POST /api/courses/{id}/enroll → Enroll in Course
-
-GET /api/my-enrollments → My Enrollments
-
-POST /api/lessons/{id}/complete → Mark Lesson Complete
-
-GET /api/courses/{id}/progress → Track Progress
-
-POST /api/courses/{id}/reviews → Add Review
-
-📝 Assignments & Quizzes
-
-POST /api/lessons/{id}/assignments → Create Assignment
-
-POST /api/assignments/{id}/submit → Submit Assignment
-
-PUT /api/submissions/{id}/grade → Grade Assignment
-
-POST /api/lessons/{id}/quizzes → Create Quiz
-
-POST /api/quizzes/{id}/questions → Add Questions to Quiz
-
-POST /api/quizzes/{id}/attempt → Attempt Quiz
-
-GET /api/quizzes/{id}/results → View Quiz Results
-
-💳 Payments & Certificates
-
-POST /api/checkout → Checkout
-
-POST /api/payment/webhook → Payment Webhook
-
-GET /api/courses/{id}/certificate → Download Certificate
-
-🛠️ Admin APIs
-
-Manage Users (list, update, block/unblock)
-
-Manage Courses & Categories
-
-View Platform Analytics (total users, revenue, top courses)
-
-🗄️ Database Design
-Main Entities
-
-Users & Roles
-
-Courses & Categories
-
-Lessons
-
-Enrollments & Progress
-
-Assignments & Submissions
-
-Quizzes & Questions
-
-Payments & Certificates
-
-Core Tables
-
-Authentication & Roles → users, roles, permissions
-
-Course Management → categories, courses, lessons
-
-Enrollment & Progress → enrollments, reviews, lesson_progress
-
-Assignments & Quizzes → assignments, submissions, quizzes, questions, quiz_attempts
-
-Payments & Certificates → payments, certificates
-
-Optional → notifications, settings, admin_logs, attachments
-
-📦 Deliverables
-
-✅ Complete Laravel backend with all APIs
-
-✅ Database migrations, seeders, and factories
-
-✅ Postman collection (sample requests & responses)
-
-✅ README file (setup & payment integration guide)
-
-✅ ERD (Entity Relationship Diagram) of schema  
-
+##### Manage Users (list, update, block/unblock)
+##### Manage Courses & Categories
+##### View Platform Analytics (total users, revenue, top courses)
 
 ---
-
 👉 This is a **ready-to-use README.md file** for your project.  
 Do you also want me to **add sample API request/response examples (JSON format)** in the README for each module? That would make it recruiter/developer-friendly.
