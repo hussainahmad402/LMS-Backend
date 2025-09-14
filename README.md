@@ -1,4 +1,4 @@
-# EduManage – Learning Management System (LMS) Backend API
+# EduManage – Learning Management System (LMS) Backend API's
 
 ## 📌 Project Overview
 EduManage is an online Learning Management System (LMS) designed to simplify teaching and learning through a digital platform.  
